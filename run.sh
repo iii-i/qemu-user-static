@@ -25,7 +25,7 @@ shift $((OPTIND-1))
 #   ${from_arch}_qemu-${to_arch}/ - Images including /usr/bin/qemu-$arch-status
 #   register/ - An image including /register script.
 
-from_arch="x86_64"
+from_arch="s390x"
 root_dir=$(pwd)
 out_dir="containers"
 releases_dir="releases/usr/bin/"

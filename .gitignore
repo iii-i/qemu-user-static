@@ -6,3 +6,4 @@
 /containers/register/register.sh
 /containers/x86_64_qemu-*/
 /releases
+/.idea
