@@ -24,12 +24,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: Set variables
         run: |
-          echo "DOCKER_REPO=docker.io/$GITHUB_REPOSITORY" >> $GITHUB_ENV
+          echo "DOCKER_REPO=docker.io/${{ secrets.DOCKER_USERNAME }}/qemu-user-static" >> $GITHUB_ENV
       - name: Build
         run: |
           wget --content-disposition http://ftp.de.debian.org/debian/pool/main/q/qemu/qemu-user-static_${{ env.ORIGIN_VERSION }}_amd64.deb
           dpkg-deb -R qemu-user-static_*.deb releases
-          ./run.sh -t "${{ env.VERSION }}" -r "${{ env.GITHUB_REPOSITORY }}" -d "${{ env.DOCKER_REPO }}"
+          ./run.sh -t "${{ env.VERSION }}" -r "${{ secrets.DOCKER_USERNAME }}/qemu-user-static" -d "${{ env.DOCKER_REPO }}"
       - name: Test
         run: ./test.sh -d "${{ env.DOCKER_REPO }}"
       - name: Publish
